@@ -1,0 +1,17 @@
+{
+	"name": "webgl.zifzaf.com",
+	"description": "ZifZaf's WebGL demo's",
+	"private": true,
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "3.1.x"
+	},
+	"engines": {
+		"noide": "0.10.x",
+		"npm": "1.2.x"
+	},
+	"scripts": {
+		"start": "node server.js"
+	}
+}
+
