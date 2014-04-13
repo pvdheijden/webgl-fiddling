@@ -98,6 +98,7 @@
 			} );
 			renderer.setSize(canvas.width, canvas.height);
 			renderer.setClearColor(0xffffff);
+			console.log('Max renderer.getMaxAnisotropy() = ' + renderer.getMaxAnisotropy());
 
 			async.parallel([
 				function (callback) {

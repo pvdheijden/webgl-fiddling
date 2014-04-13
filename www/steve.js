@@ -16,6 +16,14 @@ var steve = function (skin) {
         return data;
     }
 
+    function skin_material (texture) {
+        texture.magFilter = THREE.NearestFilter;
+        texture.minFilter = THREE.NearestFilter;
+        texture.needsUpdate = true;
+
+        return new THREE.MeshPhongMaterial({ "map": texture });        
+    }
+
     var torso_texture = [
         new THREE.DataTexture(skin.subdata(28,  20, 32, 32), 4, 12),  // left
         new THREE.DataTexture(skin.subdata(16,  20, 20, 32), 4, 12),  // rigth
@@ -26,8 +34,7 @@ var steve = function (skin) {
     ];
 
     var torso_material = torso_texture.map( function (texture) {
-        texture.needsUpdate = true;
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return skin_material(texture);
     });
 
     var head_texture = [
@@ -40,8 +47,7 @@ var steve = function (skin) {
     ]; 
 
     var head_material = head_texture.map( function (texture) {
-        texture.needsUpdate = true;
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return skin_material(texture);
     });
 
     var arm_texture = [
@@ -54,8 +60,7 @@ var steve = function (skin) {
     ]; 
 
     var arm_material = arm_texture.map( function (texture) {
-        texture.needsUpdate = true;
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return skin_material(texture);
     });
 
     var leg_texture = [
@@ -68,8 +73,7 @@ var steve = function (skin) {
     ]; 
 
     var leg_material = leg_texture.map( function (texture) {
-        texture.needsUpdate = true;
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return skin_material(texture);
     });
 
     /*
