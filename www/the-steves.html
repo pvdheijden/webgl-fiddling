@@ -68,6 +68,9 @@
 		<div class="col-md-2">
 			<img id="skin3" class="center-block" src="./skins/firedragon.png" alt="Firedragon's skin">
 		</div>
+		<div class="col-md-2">
+			<img id="skin4" class="center-block" src="./skins/creeper.png" alt="Creeper's skin">
+		</div>
 	</div>
 
 	<script type="text/javascript">
@@ -102,8 +105,8 @@
 
 			async.parallel([
 				function (callback) {
-					$("#skin1").one("load", function() {
-						callback(null, get_skin_data( $("#skin1")[0]));
+					$("#skin4").one("load", function() {
+						callback(null, get_skin_data( $("#skin4")[0]));
 					});
 				},
 				function (callback) {
@@ -119,6 +122,15 @@
 			], function (err, skin_data) {
 				var steveThree = steve(skin_data[0]);
 				scene.add(steveThree);
+
+				steveThree.head().rotation.y =  15 * Math.PI/180;
+				steveThree.head().rotation.x = -15 * Math.PI/180;
+				steveThree.lArm().rotation.x = 180 * Math.PI/180;
+				steveThree.rArm().rotation.x = 180 * Math.PI/180;
+				steveThree.lLeg().rotation.x =   0 * Math.PI/180;
+				steveThree.rLeg().rotation.x = -45 * Math.PI/180;
+
+				steveThree.rotation = new THREE.Euler(0, -30 * Math.PI / 180, 0);
 
 				var steveOne = steve(skin_data[1]);
 				scene.add(steveOne);
