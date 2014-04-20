@@ -209,3 +209,92 @@ Steve.prototype.set_right_leg = function(skin) {
 
     return leg;
 };
+
+Steve.prototype.do_pose = function(pose) {
+    if (typeof pose.head !== 'undefined') {
+        this.head.rotation.x = pose.head.x;
+        this.head.rotation.y = pose.head.y;
+        this.head.rotation.z = pose.head.z;
+    }
+
+    if (typeof pose.torso !== 'undefined') {
+        this.torso.rotation.x = pose.torso.x;
+        this.torso.rotation.y = pose.torso.y;
+        this.torso.rotation.z = pose.torso.z;
+    }
+
+    if (typeof pose.left_arm !== 'undefined') {
+        this.left_arm.rotation.x = pose.left_arm.x;
+        this.left_arm.rotation.y = pose.left_arm.y;
+        this.left_arm.rotation.z = pose.left_arm.z;
+    }
+
+    if (typeof pose.right_arm !== 'undefined') {
+        this.right_arm.rotation.x = pose.right_arm.x;
+        this.right_arm.rotation.y = pose.right_arm.y;
+        this.right_arm.rotation.z = pose.right_arm.z;
+    }
+
+    if (typeof pose.left_leg !== 'undefined') {
+        this.left_leg.rotation.x = pose.left_leg.x;
+        this.left_leg.rotation.y = pose.left_leg.y;
+        this.left_leg.rotation.z = pose.left_leg.z;
+    }
+
+    if (typeof pose.right_leg !== 'undefined') {
+        this.right_leg.rotation.x = pose.right_leg.x;
+        this.right_leg.rotation.y = pose.right_leg.y;
+        this.right_leg.rotation.z = pose.right_leg.z;
+    }
+}
+
+Steve.NEUTRAL_POSE = {
+    'head':         { 'x': 0,   'y': 0,  'z': 0 },
+    'torso':        { 'x': 0,   'y': 0,  'z': 0 },
+    'left_arm':     { 'x': 0,   'y': 0,  'z': 0 },
+    'right_arm':    { 'x': 0,   'y': 0,  'z': 0 },
+    'left_leg':     { 'x': 0,   'y': 0,  'z': 0 },
+    'right_leg':    { 'x': 0,   'y': 0,  'z': 0 }
+};
+
+Steve.HI_POSE = {
+    'head':         { 'x': -15 * 0.0175,   'y': 15 * 0.0175,  'z': 0 },
+    'torso':        { 'x': 0,              'y': 0,            'z': 0 },
+    'left_arm':     { 'x': 180 * 0.0175,   'y': 0,            'z': 0 },
+    'right_arm':    { 'x': 180 * 0.0175,   'y': 0,            'z': 0 },
+    'left_leg':     { 'x': 0,              'y': 0,            'z': 0 },
+    'right_leg':    { 'x': -45 * 0.0175,   'y': 0,            'z': 0 }
+};
+
+Steve.WALK1_POSE = {
+    'head':         { 'x':  0,              'y': 15 * 0.0175,   'z': 0 },
+    'torso':        { 'x':  0,              'y': 0,             'z': 0 },
+    'left_arm':     { 'x':  45 * 0.0175,    'y': 0,             'z': 0 },
+    'right_arm':    { 'x': -45 * 0.0175,    'y': 0,             'z': 0 },
+    'left_leg':     { 'x': -45 * 0.0175,    'y': 0,             'z': 0 },
+    'right_leg':    { 'x':  45 * 0.0175,    'y': 0,             'z': 0 }
+};
+
+Steve.WALK2_POSE = {
+    'head':         { 'x':  0,              'y': -15 * 0.0175,  'z': 0 },
+    'torso':        { 'x':  0,              'y': 0,             'z': 0 },
+    'left_arm':     { 'x': -45 * 0.0175,    'y': 0,             'z': 0 },
+    'right_arm':    { 'x':  45 * 0.0175,    'y': 0,             'z': 0 },
+    'left_leg':     { 'x':  45 * 0.0175,    'y': 0,             'z': 0 },
+    'right_leg':    { 'x': -45 * 0.0175,    'y': 0,             'z': 0 }
+};
+
+Steve.WALK_SEQUENCE = [
+    Steve.WALK1_POSE,
+    Steve.NEUTRAL_POSE,
+    Steve.WALK2_POSE
+];
+
+Steve.PARADE1_POSE = {
+    'head':         { 'x': 0,               'y': 0,  'z': 0 },
+    'torso':        { 'x': 0,               'y': 0,  'z': 0 },
+    'left_arm':     { 'x': 0,               'y': 0,  'z': -90 * 0.0175 },
+    'right_arm':    { 'x': 90 * 0.0175,     'y': 0,  'z': 0 },
+    'left_leg':     { 'x': 0,               'y': 0,  'z': 0 },
+    'right_leg':    { 'x': -90 * 0.0175,    'y': 0,  'z': 0 }
+};

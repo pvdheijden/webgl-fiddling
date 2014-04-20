@@ -24,7 +24,7 @@
 		<![endif]-->
 
 		<script type="text/javascript" src="../libs/async/async.js"></script>
-		<script type="text/javascript" src="../libs/three.js/three.min.js"></script>
+		<script type="text/javascript" src="../libs/three.js/three.js"></script>
 		<script type="text/javascript" src="steve.js"></script>
 	</head>
 
@@ -125,41 +125,22 @@
 
 				var steveThree = new Steve(skin_data[0]);
                 the_steves.add(steveThree);
-
-				steveThree.head.rotation.y =  15 * Math.PI/180;
-				steveThree.head.rotation.x = -15 * Math.PI/180;
-				steveThree.left_arm.rotation.x = 180 * Math.PI/180;
-				steveThree.right_arm.rotation.x = 180 * Math.PI/180;
-				steveThree.left_leg.rotation.x =   0 * Math.PI/180;
-				steveThree.right_leg.rotation.x = -45 * Math.PI/180;
-
-				steveThree.rotation.y = -30 * Math.PI / 180;
+                steveThree.do_pose(Steve.HI_POSE);
+				steveThree.rotation.y = -30 * 0.0175;
 
 				var steveOne = new Steve(skin_data[1]);
                 the_steves.add(steveOne);
-
-				steveOne.head.rotation.y = -15 * Math.PI/180;
-				steveOne.left_arm.rotation.x =  45 * Math.PI/180;
-				steveOne.right_arm.rotation.x = -45 * Math.PI/180;
-				steveOne.left_leg.rotation.x = -45 * Math.PI/180;
-				steveOne.right_leg.rotation.x =  45 * Math.PI/180;
-
-				steveOne.rotation.y = -5 * Math.PI / 180;
+                steveOne.do_pose(Steve.WALK1_POSE);
+				steveOne.rotation.y = -5 * 0.0175;
 				steveOne.position.x = -20;
 
 				var steveTwo = new Steve(skin_data[2]);
                 the_steves.add(steveTwo);
-
-				steveTwo.head.rotation.y =   0 * Math.PI/180;
-				steveTwo.left_arm.rotation.z = -90 * Math.PI/180;
-				steveTwo.right_arm.rotation.x =  90 * Math.PI/180;
-				steveTwo.left_leg.rotation.x =   0 * Math.PI/180;
-				steveTwo.right_leg.rotation.x = -90 * Math.PI/180;
-
-				steveTwo.rotation.y = 10 * Math.PI / 180;
+                steveTwo.do_pose(Steve.PARADE1_POSE);
+				steveTwo.rotation.y = 10 * 0.0175;
 				steveTwo.position.x += 20;
 
-                the_steves.rotation.y = 10 * Math.PI/180;
+                the_steves.rotation.y = 0 * 0.0175;
 
 				renderer.render(scene, camera);				
 			});
