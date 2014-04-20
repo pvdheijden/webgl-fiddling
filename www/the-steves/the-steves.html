@@ -123,38 +123,38 @@
                 var the_steves = new THREE.Object3D();
                 scene.add(the_steves);
 
-				var steveThree = steve(skin_data[0]);
+				var steveThree = new Steve(skin_data[0]);
                 the_steves.add(steveThree);
 
-				steveThree.head().rotation.y =  15 * Math.PI/180;
-				steveThree.head().rotation.x = -15 * Math.PI/180;
-				steveThree.lArm().rotation.x = 180 * Math.PI/180;
-				steveThree.rArm().rotation.x = 180 * Math.PI/180;
-				steveThree.lLeg().rotation.x =   0 * Math.PI/180;
-				steveThree.rLeg().rotation.x = -45 * Math.PI/180;
+				steveThree.head.rotation.y =  15 * Math.PI/180;
+				steveThree.head.rotation.x = -15 * Math.PI/180;
+				steveThree.left_arm.rotation.x = 180 * Math.PI/180;
+				steveThree.right_arm.rotation.x = 180 * Math.PI/180;
+				steveThree.left_leg.rotation.x =   0 * Math.PI/180;
+				steveThree.right_leg.rotation.x = -45 * Math.PI/180;
 
 				steveThree.rotation.y = -30 * Math.PI / 180;
 
-				var steveOne = steve(skin_data[1]);
+				var steveOne = new Steve(skin_data[1]);
                 the_steves.add(steveOne);
 
-				steveOne.head().rotation.y = -15 * Math.PI/180;
-				steveOne.lArm().rotation.x =  45 * Math.PI/180;
-				steveOne.rArm().rotation.x = -45 * Math.PI/180;
-				steveOne.lLeg().rotation.x = -45 * Math.PI/180;
-				steveOne.rLeg().rotation.x =  45 * Math.PI/180;
+				steveOne.head.rotation.y = -15 * Math.PI/180;
+				steveOne.left_arm.rotation.x =  45 * Math.PI/180;
+				steveOne.right_arm.rotation.x = -45 * Math.PI/180;
+				steveOne.left_leg.rotation.x = -45 * Math.PI/180;
+				steveOne.right_leg.rotation.x =  45 * Math.PI/180;
 
 				steveOne.rotation.y = -5 * Math.PI / 180;
-				steveOne.position.x += -20;
+				steveOne.position.x = -20;
 
-				var steveTwo = steve(skin_data[2]);
+				var steveTwo = new Steve(skin_data[2]);
                 the_steves.add(steveTwo);
 
-				steveTwo.head().rotation.y =   0 * Math.PI/180;
-				steveTwo.lArm().rotation.z = -90 * Math.PI/180;
-				steveTwo.rArm().rotation.x =  90 * Math.PI/180;
-				steveTwo.lLeg().rotation.x =   0 * Math.PI/180;
-				steveTwo.rLeg().rotation.x = -90 * Math.PI/180;
+				steveTwo.head.rotation.y =   0 * Math.PI/180;
+				steveTwo.left_arm.rotation.z = -90 * Math.PI/180;
+				steveTwo.right_arm.rotation.x =  90 * Math.PI/180;
+				steveTwo.left_leg.rotation.x =   0 * Math.PI/180;
+				steveTwo.right_leg.rotation.x = -90 * Math.PI/180;
 
 				steveTwo.rotation.y = 10 * Math.PI / 180;
 				steveTwo.position.x += 20;
