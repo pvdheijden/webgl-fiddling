@@ -25,7 +25,7 @@
 
 		<script type="text/javascript" src="../libs/async/async.js"></script>
 		<script type="text/javascript" src="../libs/three.js/three.js"></script>
-		<script type="text/javascript" src="steve.js"></script>
+		<script type="text/javascript" src="../libs/steve/steve.js"></script>
 	</head>
 
 	<body>
@@ -130,13 +130,13 @@
 
 				var steveOne = new Steve(skin_data[1]);
                 the_steves.add(steveOne);
-                steveOne.do_pose(Steve.WALK1_POSE);
+                steveOne.do_pose(Steve.WALK_POSE);
 				steveOne.rotation.y = -5 * 0.0175;
 				steveOne.position.x = -20;
 
 				var steveTwo = new Steve(skin_data[2]);
                 the_steves.add(steveTwo);
-                steveTwo.do_pose(Steve.PARADE1_POSE);
+                steveTwo.do_pose(Steve.PARADE_POSE);
 				steveTwo.rotation.y = 10 * 0.0175;
 				steveTwo.position.x += 20;
 

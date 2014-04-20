@@ -46,7 +46,7 @@ Steve.prototype.set_torso = function(skin) {
         texture.minFilter = THREE.NearestFilter;
         texture.needsUpdate = true;
 
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
     });
 
     var torso = new THREE.Mesh(new THREE.CubeGeometry(8, 12, 4, 8, 12, 4),
@@ -65,19 +65,76 @@ Steve.prototype.set_head = function(skin) {
         new THREE.DataTexture(skin.subdata(24,  8, 32, 16), 8, 8)    // back
     ];
 
+    var hat_texture = [
+        new THREE.DataTexture(skin.subdata(48,  8, 56, 16), 8, 8),   // left
+        new THREE.DataTexture(skin.subdata(32,  8, 40, 16), 8, 8),   // rigth
+        new THREE.DataTexture(skin.subdata(40,  0, 48,  8), 8, 8),   // top
+        new THREE.DataTexture(skin.subdata(48,  0, 56,  8), 8, 8),   // bottom
+        new THREE.DataTexture(skin.subdata(40,  8, 48, 16), 8, 8),   // front
+        new THREE.DataTexture(skin.subdata(56,  8, 64, 16), 8, 8)    // back
+    ];
+
+/*
+    var merge = function(head_data, hat_data) {
+        for (var i = 0; i < 8 * 8 * 4; i += 4) {
+            if (hat_data[i + 3] > 0) {
+                head_data[i    ] = hat_data[i    ];
+                head_data[i + 1] = hat_data[i + 1];
+                head_data[i + 2] = hat_data[i + 2];
+                head_data[i + 3] = hat_data[i + 3];
+            }
+        }
+
+        return head_data;
+    }
+
+    var head_texture = [
+        new THREE.DataTexture(merge(
+                skin.subdata(16,  8, 24, 16),
+                skin.subdata(48,  8, 56, 16)), 8, 8),   // left
+        new THREE.DataTexture(merge(
+                skin.subdata( 0,  8,  8, 16),
+                skin.subdata(32,  8, 40, 16)), 8, 8),   // rigth
+        new THREE.DataTexture(merge(
+                skin.subdata( 8,  0, 16,  8),
+                skin.subdata(40,  0, 48,  8)), 8, 8),   // top
+        new THREE.DataTexture(merge(
+                skin.subdata(16,  0, 24,  8),
+                skin.subdata(48,  0, 56,  8)), 8, 8),   // bottom
+        new THREE.DataTexture(merge(
+                skin.subdata( 8,  8, 16, 16),
+                skin.subdata(40,  8, 48, 16)), 8, 8),   // front
+        new THREE.DataTexture(merge(
+                skin.subdata(24,  8, 32, 16),
+                skin.subdata(56,  8, 64, 16)), 8, 8)    // back
+    ];
+*/
     var head_material = head_texture.map( function (texture) {
         texture.magFilter = THREE.NearestFilter;
         texture.minFilter = THREE.NearestFilter;
         texture.needsUpdate = true;
 
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
     });
 
     var _head = new THREE.Mesh(new THREE.CubeGeometry(8, 8, 8, 8, 8, 8),
         new THREE.MeshFaceMaterial(head_material));
 
+    var hat_material = hat_texture.map( function (texture) {
+        texture.magFilter = THREE.NearestFilter;
+        texture.minFilter = THREE.NearestFilter;
+        texture.needsUpdate = true;
+
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
+    });
+
+    var _hat = new THREE.Mesh(new THREE.CubeGeometry(9, 8, 9, 9, 8, 9),
+        new THREE.MeshFaceMaterial(hat_material));
+
     var head = new THREE.Object3D();
     head.add(_head);
+    head.add(_hat);
+
     head.position.y += 10;
     this.torso.add(head);
 
@@ -99,7 +156,7 @@ Steve.prototype.set_left_arm = function(skin) {
         texture.minFilter = THREE.NearestFilter;
         texture.needsUpdate = true;
 
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
     });
 
     var _arm = new THREE.Mesh(new THREE.CubeGeometry(4, 12, 4, 4, 12, 4),
@@ -130,7 +187,7 @@ Steve.prototype.set_right_arm = function(skin) {
         texture.minFilter = THREE.NearestFilter;
         texture.needsUpdate = true;
 
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
     });
 
     var _arm = new THREE.Mesh(new THREE.CubeGeometry(4, 12, 4, 4, 12, 4),
@@ -161,7 +218,7 @@ Steve.prototype.set_left_leg = function(skin) {
         texture.minFilter = THREE.NearestFilter;
         texture.needsUpdate = true;
 
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
     });
 
     var _leg = new THREE.Mesh(new THREE.CubeGeometry(4, 12, 4, 4, 12, 4),
@@ -193,7 +250,7 @@ Steve.prototype.set_right_leg = function(skin) {
         texture.minFilter = THREE.NearestFilter;
         texture.needsUpdate = true;
 
-        return new THREE.MeshPhongMaterial({ "map": texture });
+        return new THREE.MeshPhongMaterial({ transparent:true, "map": texture });
     });
 
     var _leg = new THREE.Mesh(new THREE.CubeGeometry(4, 12, 4, 4, 12, 4),
@@ -209,6 +266,7 @@ Steve.prototype.set_right_leg = function(skin) {
 
     return leg;
 };
+
 
 Steve.prototype.do_pose = function(pose) {
     if (typeof pose.head !== 'undefined') {
@@ -266,7 +324,7 @@ Steve.HI_POSE = {
     'right_leg':    { 'x': -45 * 0.0175,   'y': 0,            'z': 0 }
 };
 
-Steve.WALK1_POSE = {
+Steve.WALK_POSE = {
     'head':         { 'x':  0,              'y': 15 * 0.0175,   'z': 0 },
     'torso':        { 'x':  0,              'y': 0,             'z': 0 },
     'left_arm':     { 'x':  45 * 0.0175,    'y': 0,             'z': 0 },
@@ -275,22 +333,7 @@ Steve.WALK1_POSE = {
     'right_leg':    { 'x':  45 * 0.0175,    'y': 0,             'z': 0 }
 };
 
-Steve.WALK2_POSE = {
-    'head':         { 'x':  0,              'y': -15 * 0.0175,  'z': 0 },
-    'torso':        { 'x':  0,              'y': 0,             'z': 0 },
-    'left_arm':     { 'x': -45 * 0.0175,    'y': 0,             'z': 0 },
-    'right_arm':    { 'x':  45 * 0.0175,    'y': 0,             'z': 0 },
-    'left_leg':     { 'x':  45 * 0.0175,    'y': 0,             'z': 0 },
-    'right_leg':    { 'x': -45 * 0.0175,    'y': 0,             'z': 0 }
-};
-
-Steve.WALK_SEQUENCE = [
-    Steve.WALK1_POSE,
-    Steve.NEUTRAL_POSE,
-    Steve.WALK2_POSE
-];
-
-Steve.PARADE1_POSE = {
+Steve.PARADE_POSE = {
     'head':         { 'x': 0,               'y': 0,  'z': 0 },
     'torso':        { 'x': 0,               'y': 0,  'z': 0 },
     'left_arm':     { 'x': 0,               'y': 0,  'z': -90 * 0.0175 },
