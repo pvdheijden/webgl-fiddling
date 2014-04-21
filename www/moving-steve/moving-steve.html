@@ -61,21 +61,27 @@
 
     <div class ="row text-center">
         <div class="col-md-2">
-            <img id="skin1" class="center-block" src="../skins/blockypixel.png" alt="Blocky Pixel's skin">
+            <img id="skin1" class="center-block skin" src="../skins/greekwarrior.png" alt="Greek Warrior's skin">
         </div>
         <div class="col-md-2">
-            <img id="skin2" class="center-block" src="../skins/mudkipgirl.png" alt="Mudkip girl's skin">
+            <img id="skin2" class="center-block skin" src="../skins/mudkipgirl.png" alt="Mudkip girl's skin">
         </div>
         <div class="col-md-2">
-            <img id="skin3" class="center-block" src="../skins/firedragon.png" alt="Firedragon's skin">
+            <img id="skin3" class="center-block skin" src="../skins/firedragon.png" alt="Firedragon's skin">
         </div>
         <div class="col-md-2">
-            <img id="skin4" class="center-block" src="../skins/creeper.png" alt="Creeper's skin">
+            <img id="skin4" class="center-block skin" src="../skins/creeper.png" alt="Creeper's skin">
         </div>
         <div class="col-md-2">
-            <img id="skin5" class="center-block" src="../skins/yoshi.png" alt="Creeper's skin">
+            <img id="skin5" class="center-block skin" src="../skins/yoshi.png" alt="Creeper's skin">
+        </div>
+        <div class="col-md-2">
+            <img id="skin6" class="center-block skin" src="../skins/achaemenid.png" alt="Achaemenid's skin">
         </div>
     </div>
+
+    <script type="text/javascript">
+    </script>
 
     <script type="text/javascript">
         function get_skin_data(skin) {
@@ -85,6 +91,8 @@
         };
 
         $(function () {
+            var steve;
+
             var scene = new THREE.Scene();
 
             // Ambiant light
@@ -114,22 +122,19 @@
                     });
                 }
             ], function (err, skin_data) {
-                var the_steves = new THREE.Object3D();
-                scene.add(the_steves);
-
-                var steve = new Steve(skin_data[0]);
-                the_steves.add(steve);
-                steve.do_pose(Steve.NEUTRAL_POSE);
+                steve = new Steve(skin_data[0]);
+                steve.do_pose(Steve.WALK_POSE);
+                scene.add(steve);
 
                 var rotation = { 'x': 0, 'y': 0, 'z': 0 },
-                    rotation_target = { 'x': 0, 'y': 360, 'z': 0 };
+                    rotation_target = { 'x': 0, 'y': 2 * Math.PI, 'z': 0 };
                 var rotation_tween = new TWEEN.Tween(rotation)
                     .to(rotation_target, 20000)
                     .repeat(Infinity)
                     .onUpdate(function() {
-                        steve.rotation.x = rotation.x * 0.0175;
-                        steve.rotation.y = rotation.y * 0.0175;
-                        steve.rotation.z = rotation.z * 0.0175;
+                        steve.rotation.x = rotation.x;
+                        steve.rotation.y = rotation.y;
+                        steve.rotation.z = rotation.z;
                     })
                     .start();
 
@@ -156,6 +161,15 @@
 
                     TWEEN.update();
                 })();
+            });
+
+            $("img").click(function (event) {
+                scene.remove(steve);
+
+                steve = new Steve(get_skin_data($(this)[0]));
+                steve.do_pose(Steve.WALK_POSE);
+
+                scene.add(steve);
             });
         });
     </script>
