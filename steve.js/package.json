@@ -18,8 +18,7 @@
     ]
   },
   "browserify-shim": {
-    "three": "global:THREE",
-    "tween": "global:TWEEN"
+    "three": "global:THREE"
   },
   "dependencies": {
     "tween.js": "^0.14.0"
