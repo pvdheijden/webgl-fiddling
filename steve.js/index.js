@@ -1,0 +1,1 @@
+Steve = require('./lib/steve.js');

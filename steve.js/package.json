@@ -1,0 +1,27 @@
+{
+  "name": "steve.js",
+  "version": "0.0.1",
+  "main": "index.js",
+  "devDependencies": {
+    "browserify": "^6.1.0",
+    "browserify-shim": "^3.8.0",
+    "uglify-js": "^2.4.15",
+    "watchify": "^2.0.0"
+  },
+  "scripts": {
+    "build": "BROWSERIFYSHIM_DIAGNOSTICS=1 browserify index.js -o ../public/steve.js",
+    "watch": "watchify index.js -o ../public/steve.js --debug --verbose"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "three": "global:THREE",
+    "tween": "global:TWEEN"
+  },
+  "dependencies": {
+    "tween.js": "^0.14.0"
+  }
+}
