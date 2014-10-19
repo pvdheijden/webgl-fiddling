@@ -1,157 +1,189 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>The Steves</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!-- Bootstrap -->
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css">
-		<style type="text/css">
-			body {
-				padding-top: 20px;
-				padding-bottom: 20px;
-				margin-bottom: 20px;
-			}
-	    </style>
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<head>
+    <title>The Steves</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.css">
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
-		<![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+    <![endif]-->
 
-		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/async/0.9.0/async.js"></script>
-		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
-		<script type="text/javascript" src="../steve.js"></script>
-	</head>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/async/0.9.0/async.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
+    <script type="text/javascript" src="../steve.js"></script>
+</head>
 
-	<body>
+<body>
 
-	<div class="container">
-	<!-- Menu balk -->
-	<div class="navbar navbar-default" role="navigation">
-		<div class=navbar-header>
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a href="//webgl.zifzaf.net" class="navbar-brand">ZifZaf</a>
-		</div>
+<div class="container">
+    <!-- Menu balk -->
+    <div class="navbar navbar-default" role="navigation">
+        <div class=navbar-header>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="//webgl.zifzaf.net" class="navbar-brand">ZifZaf</a>
+        </div>
 
-		<div class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="/index.html">Home</a></li>
-			</ul>
-		</div>
-	</div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/index.html">Home</a></li>
+            </ul>
+        </div>
+    </div>
 
-	<!-- De eigenlijke pagina -->
-	<div class="row text-center">
-		<div class="col-md-12">
-		    <canvas id="canvas" width="800" height="600">
-				Your browser does not support HTML5
-		    </canvas>
-		</div><!-- /.col-md-12 -->
-	</div><!-- /.row -->
+    <!-- De eigenlijke pagina -->
+    <div class="row text-center">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <input id="skin_input" type="file" accept="image/*" style="display:none"
+                       onchange="load_skin_data(this.files)">
+                <a href="#" id="skin_select" onclick="$('#skin_input').click()">Select a skin-file.</a> <span
+                    id="skin_file"></span>
+            </div>
+        </form>
+    </div>
 
-	<div class ="row text-center">
-		<div class="col-md-2">
-			<img id="skin1" class="center-block" src="../skins/blockypixel.png" alt="Blocky Pixel's skin">
-		</div>
-		<div class="col-md-2">
-			<img id="skin2" class="center-block" src="../skins/mudkipgirl.png" alt="Mudkip girl's skin">
-		</div>
-		<div class="col-md-2">
-			<img id="skin3" class="center-block" src="../skins/firedragon.png" alt="Firedragon's skin">
-		</div>
-		<div class="col-md-2">
-			<img id="skin4" class="center-block" src="../skins/creeper.png" alt="Creeper's skin">
-		</div>
-	</div>
+    <div class="row text-center">
+        <div class="col-md-12">
+            <canvas id="canvas" width="800" height="600">
+                Your browser does not support HTML5
+            </canvas>
+        </div>
+        <!-- /.col-md-12 -->
+    </div>
+    <!-- /.row -->
 
-	<script type="text/javascript">
-		function get_skin_data(skin) {
-			var context = $("<canvas>")[0].getContext("2d");
-			context.drawImage(skin, 0, 0);
-			return context.getImageData(0, 0, skin.width, skin.height);
-		}
+    <div class="row text-center" hidden="true">
+        <div class="col-md-2">
+            <img id="skin1" class="center-block" src="../skins/blockypixel.png" alt="Blocky Pixel's skin">
+        </div>
+        <div class="col-md-2">
+            <img id="skin2" class="center-block" src="../skins/mudkipgirl.png" alt="Mudkip girl's skin">
+        </div>
+        <div class="col-md-2">
+            <img id="skin3" class="center-block" src="../skins/firedragon.png" alt="Firedragon's skin">
+        </div>
+        <div class="col-md-2">
+            <img id="skin4" class="center-block" src="../skins/creeper.png" alt="Creeper's skin">
+        </div>
+    </div>
 
-		$(function () {
-			var scene = new THREE.Scene();
+</div>
 
-			// Ambiant light
-			var ambiant = new THREE.AmbientLight( 0xf0f0f0 ); // soft white light
-			scene.add(ambiant);
+<script type="text/javascript">
 
-			// Create a directional light to show off the object
-			//var light = new THREE.DirectionalLight( 0xffffff, 1.5);
-			//light.position.set(0, 0, 8);
-			//scene.add(light);
+    var scene = new THREE.Scene();
 
-			var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 1000); 
-			camera.position.set(0, 0, 36);
+    // Ambiant light
+    var ambiant = new THREE.AmbientLight(0xf0f0f0); // soft white light
+    scene.add(ambiant);
 
-            var canvas = $("#canvas")[0];
-			var renderer = new THREE.WebGLRenderer( { 
-				"canvas": canvas,
-				"antialias": true,
-                "sortObjects": false
-			} );
-			renderer.setSize(canvas.width, canvas.height);
-			renderer.setClearColor(0xffffff);
+    // Create a directional light to show off the object
+    var light = new THREE.DirectionalLight(0x0f0f0f, 1.5);
+    light.position.set(0, 0, 8);
+    scene.add(light);
 
-			async.parallel([
-				function (callback) {
-					$("#skin4").one("load", function() {
-						callback(null, get_skin_data( $("#skin4")[0]));
-					});
-				},
-				function (callback) {
-					$("#skin2").one("load", function() {
-						callback(null, get_skin_data( $("#skin2")[0]));
-					});
-				},
-				function (callback) {
-					$("#skin3").one("load", function() {
-						callback(null, get_skin_data( $("#skin3")[0]));
-					});
-				}
-			], function (err, skin_data) {
-                var the_steves = new THREE.Object3D();
-                scene.add(the_steves);
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.position.set(0, 0, 36);
 
-                var steveThree = new Steve(skin_data[0]);
-                the_steves.add(steveThree);
-                steveThree.do_pose(Steve.HI_POSE);
-				steveThree.rotation.y = -30 * 0.0175;
+    var canvas = $("#canvas")[0];
+    var renderer = new THREE.WebGLRenderer({ "canvas": canvas, "antialias": true });
+    renderer.setSize(canvas.width, canvas.height);
+    renderer.setClearColor(0xffffff);
 
-                /*
-				var steveOne = new Steve(skin_data[1]);
-                the_steves.add(steveOne);
-                steveOne.do_pose(Steve.WALK_POSE);
-				steveOne.rotation.y = -5 * 0.0175;
-				steveOne.position.x = -20;
-				*/
+    var the_steves = new THREE.Object3D();
+    scene.add(the_steves);
 
-                /*
-				var steveTwo = new Steve(skin_data[2]);
-                the_steves.add(steveTwo);
-                steveTwo.do_pose(Steve.PARADE_POSE);
-				steveTwo.rotation.y = 10 * 0.0175;
-				steveTwo.position.x += 20;
-				*/
+    var steveOne, steveTwo, steveThree;
 
-                the_steves.rotation.y = 0 * 0.0175;
+    function load_skin_data(skin_files) {
+        if (skin_files.length > 0) {
+            var skin_file = skin_files[0];
+            if (skin_file.type.match("image.*")) {
+                var fileReader = new FileReader();
+                fileReader.onload = function (event) {
+                    var skin_image = new Image();
+                    skin_image.onload = function (event) {
 
-				renderer.render(scene, camera);				
-			});
-		});
-	</script>
+                        the_steves.remove(steveThree);
 
-	</body>	
+                        steveThree = new Steve(skin_image);
+                        the_steves.add(steveThree);
+                        //steveThree.do_pose(Steve.HI_POSE);
+                        //steveThree.rotation.y = -30 * 0.0175;
+
+                        renderer.render(scene, camera);
+
+                    };
+                    skin_image.src = fileReader.result;
+
+                };
+                fileReader.readAsDataURL(skin_file);
+            }
+        }
+    }
+
+    $(function () {
+        async.parallel([
+            function (callback) {
+                $("#skin4").one("load", function () {
+                    callback(null, new Steve($("#skin4")[0]));
+                });
+            },
+            function (callback) {
+                $("#skin2").one("load", function () {
+                    callback(null, new Steve($("#skin2")[0]));
+                });
+            },
+            function (callback) {
+                $("#skin3").one("load", function () {
+                    callback(null, new Steve($("#skin3")[0]));
+                });
+            }
+        ], function (err, steves) {
+            steveThree = steves[0];
+            the_steves.add(steveThree);
+            steveThree.do_pose(Steve.HI_POSE);
+            steveThree.rotation.y = -30 * 0.0175;
+
+            steveOne = steves[1];
+            the_steves.add(steveOne);
+            steveOne.do_pose(Steve.WALK_POSE);
+            steveOne.rotation.y = -5 * 0.0175;
+            steveOne.position.x = -20;
+
+            steveTwo = steves[2];
+            the_steves.add(steveTwo);
+            steveTwo.do_pose(Steve.PARADE_POSE);
+            steveTwo.rotation.y = 10 * 0.0175;
+            steveTwo.position.x += 20;
+
+            the_steves.rotation.y = 0 * 0.0175;
+
+            renderer.render(scene, camera);
+        });
+
+    });
+</script>
+
+</body>
 
 </html>
