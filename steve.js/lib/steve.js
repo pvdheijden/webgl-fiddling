@@ -59,7 +59,7 @@ Steve.prototype = Object.create(THREE.Object3D.prototype);
 Steve.prototype.create_torso = function () {
     var torso_texture = [
         new THREE.DataTexture(this.skin.subdata(28, 20, 32, 32), 4, 12),  // left
-        new THREE.DataTexture(this.skin.subdata(16, 20, 20, 32), 4, 12),  // rigth
+        new THREE.DataTexture(this.skin.subdata(16, 20, 20, 32), 4, 12),  // right
         new THREE.DataTexture(this.skin.subdata(20, 16, 28, 20), 8, 4),  // top
         new THREE.DataTexture(this.skin.subdata(28, 16, 36, 20), 8, 4),  // bottom
         new THREE.DataTexture(this.skin.subdata(20, 20, 28, 32), 8, 12),  // front
@@ -83,7 +83,7 @@ Steve.prototype.create_torso = function () {
 Steve.prototype.create_head = function () {
     var head_texture = [
         new THREE.DataTexture(this.skin.subdata(16, 8, 24, 16), 8, 8),   // left
-        new THREE.DataTexture(this.skin.subdata(0, 8, 8, 16), 8, 8),   // rigth
+        new THREE.DataTexture(this.skin.subdata(0, 8, 8, 16), 8, 8),   // right
         new THREE.DataTexture(this.skin.subdata(8, 0, 16, 8), 8, 8),   // top
         new THREE.DataTexture(this.skin.subdata(16, 0, 24, 8), 8, 8),   // bottom
         new THREE.DataTexture(this.skin.subdata(8, 8, 16, 16), 8, 8),   // front
@@ -103,7 +103,7 @@ Steve.prototype.create_head = function () {
 
     var hat_texture = [
         new THREE.DataTexture(this.skin.subdata(48, 8, 56, 16), 8, 8),   // left
-        new THREE.DataTexture(this.skin.subdata(32, 8, 40, 16), 8, 8),   // rigth
+        new THREE.DataTexture(this.skin.subdata(32, 8, 40, 16), 8, 8),   // right
         new THREE.DataTexture(this.skin.subdata(40, 0, 48, 8), 8, 8),   // top
         new THREE.DataTexture(this.skin.subdata(48, 0, 56, 8), 8, 8),   // bottom
         new THREE.DataTexture(this.skin.subdata(40, 8, 48, 16), 8, 8),   // front
@@ -131,7 +131,7 @@ Steve.prototype.create_head = function () {
 Steve.prototype.create_left_arm = function () {
     var arm_texture = [
         new THREE.DataTexture(this.skin.subdata(48, 20, 52, 32), 4, 12),  // left
-        new THREE.DataTexture(this.skin.subdata(40, 20, 44, 32), 4, 12),  // rigth
+        new THREE.DataTexture(this.skin.subdata(40, 20, 44, 32), 4, 12),  // right
         new THREE.DataTexture(this.skin.subdata(44, 16, 48, 20), 4, 4),   // top
         new THREE.DataTexture(this.skin.subdata(48, 16, 52, 20), 4, 4),   // bottom
         new THREE.DataTexture(this.skin.subdata(44, 20, 48, 32), 4, 12),   // front
@@ -159,7 +159,7 @@ Steve.prototype.create_left_arm = function () {
 Steve.prototype.create_right_arm = function () {
     var arm_texture = [
         new THREE.DataTexture(this.skin.subdata(48, 20, 52, 32), 4, 12),  // left
-        new THREE.DataTexture(this.skin.subdata(40, 20, 44, 32), 4, 12),  // rigth
+        new THREE.DataTexture(this.skin.subdata(40, 20, 44, 32), 4, 12),  // right
         new THREE.DataTexture(this.skin.subdata(44, 16, 48, 20), 4, 4),   // top
         new THREE.DataTexture(this.skin.subdata(48, 16, 52, 20), 4, 4),   // bottom
         new THREE.DataTexture(this.skin.subdata(44, 20, 48, 32), 4, 12),   // front
@@ -187,7 +187,7 @@ Steve.prototype.create_right_arm = function () {
 Steve.prototype.create_left_leg = function () {
     var leg_texture = [
         new THREE.DataTexture(this.skin.subdata(8, 20, 12, 32), 4, 12),  // left
-        new THREE.DataTexture(this.skin.subdata(0, 20, 4, 32), 4, 12),  // rigth
+        new THREE.DataTexture(this.skin.subdata(0, 20, 4, 32), 4, 12),  // right
         new THREE.DataTexture(this.skin.subdata(4, 16, 8, 20), 4, 4),   // top
         new THREE.DataTexture(this.skin.subdata(8, 16, 12, 20), 4, 4),   // bottom
         new THREE.DataTexture(this.skin.subdata(4, 20, 8, 32), 4, 12),   // front
@@ -216,7 +216,7 @@ Steve.prototype.create_left_leg = function () {
 Steve.prototype.create_right_leg = function () {
     var leg_texture = [
         new THREE.DataTexture(this.skin.subdata(8, 20, 12, 32), 4, 12),  // left
-        new THREE.DataTexture(this.skin.subdata(0, 20, 4, 32), 4, 12),  // rigth
+        new THREE.DataTexture(this.skin.subdata(0, 20, 4, 32), 4, 12),  // right
         new THREE.DataTexture(this.skin.subdata(4, 16, 8, 20), 4, 4),   // top
         new THREE.DataTexture(this.skin.subdata(8, 16, 12, 20), 4, 4),   // bottom
         new THREE.DataTexture(this.skin.subdata(4, 20, 8, 32), 4, 12),   // front
