@@ -24,7 +24,7 @@
     <![endif]-->
 
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/async/0.9.0/async.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r68/three.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r69/three.js"></script>
     <script type="text/javascript" src="../steve.js"></script>
 </head>
 
@@ -125,7 +125,7 @@
 
                         the_steves.remove(steveThree);
 
-                        steveThree = new Steve(skin_image);
+                        steveThree = new Steve(skin_image, Steve.HI_POSE);
                         the_steves.add(steveThree);
                         //steveThree.do_pose(Steve.HI_POSE);
                         //steveThree.rotation.y = -30 * 0.0175;
@@ -145,34 +145,34 @@
         async.parallel([
             function (callback) {
                 $("#skin4").one("load", function () {
-                    callback(null, new Steve($("#skin4")[0]));
+                    callback(null, new Steve($("#skin4")[0], poses.HI_POSE));
                 });
             },
             function (callback) {
                 $("#skin2").one("load", function () {
-                    callback(null, new Steve($("#skin2")[0]));
+                    callback(null, new Steve($("#skin2")[0], poses.WALK_POSE));
                 });
             },
             function (callback) {
                 $("#skin3").one("load", function () {
-                    callback(null, new Steve($("#skin3")[0]));
+                    callback(null, new Steve($("#skin3")[0], poses.PARADE_POSE));
                 });
             }
         ], function (err, steves) {
             steveThree = steves[0];
             the_steves.add(steveThree);
-            steveThree.do_pose(Steve.HI_POSE);
+            //steveThree.do_pose(Steve.HI_POSE);
             steveThree.rotation.y = -30 * 0.0175;
 
             steveOne = steves[1];
             the_steves.add(steveOne);
-            steveOne.do_pose(Steve.WALK_POSE);
+            //steveOne.do_pose(Steve.WALK_POSE);
             steveOne.rotation.y = -5 * 0.0175;
             steveOne.position.x = -20;
 
             steveTwo = steves[2];
             the_steves.add(steveTwo);
-            steveTwo.do_pose(Steve.PARADE_POSE);
+            //steveTwo.do_pose(Steve.PARADE_POSE);
             steveTwo.rotation.y = 10 * 0.0175;
             steveTwo.position.x += 20;
 

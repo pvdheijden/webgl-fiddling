@@ -1,9 +1,9 @@
 "use strict";
 
-var THREE = require('three');
+var THREE = require('threejs');
 var TWEEN = require('tween.js');
 
-function Steve(skin_image) {
+function Steve(skin_image, pose) {
     THREE.Object3D.call(this);
 
     var context = $("<canvas>")[0].getContext("2d");
@@ -52,6 +52,10 @@ function Steve(skin_image) {
     this.torso.add(this.right_leg);
 
     this.add(this.torso);
+
+    this.do_pose(pose);
+
+    return this;
 }
 
 Steve.prototype = Object.create(THREE.Object3D.prototype);
@@ -279,42 +283,6 @@ Steve.prototype.do_pose = function (pose) {
         this.right_leg.rotation.y = pose.right_leg.y;
         this.right_leg.rotation.z = pose.right_leg.z;
     }
-};
-
-Steve.NEUTRAL_POSE = {
-    'head': { 'x': 0, 'y': 0, 'z': 0 },
-    'torso': { 'x': 0, 'y': 0, 'z': 0 },
-    'left_arm': { 'x': 0, 'y': 0, 'z': 0 },
-    'right_arm': { 'x': 0, 'y': 0, 'z': 0 },
-    'left_leg': { 'x': 0, 'y': 0, 'z': 0 },
-    'right_leg': { 'x': 0, 'y': 0, 'z': 0 }
-};
-
-Steve.HI_POSE = {
-    'head': { 'x': -15 * 0.0175, 'y': 15 * 0.0175, 'z': 0 },
-    'torso': { 'x': 0, 'y': 0, 'z': 0 },
-    'left_arm': { 'x': 180 * 0.0175, 'y': 0, 'z': 0 },
-    'right_arm': { 'x': 180 * 0.0175, 'y': 0, 'z': 0 },
-    'left_leg': { 'x': 0, 'y': 0, 'z': 0 },
-    'right_leg': { 'x': -45 * 0.0175, 'y': 0, 'z': 0 }
-};
-
-Steve.WALK_POSE = {
-    'head': { 'x': 0, 'y': 15 * 0.0175, 'z': 0 },
-    'torso': { 'x': 0, 'y': 0, 'z': 0 },
-    'left_arm': { 'x': 45 * 0.0175, 'y': 0, 'z': 0 },
-    'right_arm': { 'x': -45 * 0.0175, 'y': 0, 'z': 0 },
-    'left_leg': { 'x': -45 * 0.0175, 'y': 0, 'z': 0 },
-    'right_leg': { 'x': 45 * 0.0175, 'y': 0, 'z': 0 }
-};
-
-Steve.PARADE_POSE = {
-    'head': { 'x': 0, 'y': 0, 'z': 0 },
-    'torso': { 'x': 0, 'y': 0, 'z': 0 },
-    'left_arm': { 'x': 0, 'y': 0, 'z': -90 * 0.0175 },
-    'right_arm': { 'x': 90 * 0.0175, 'y': 0, 'z': 0 },
-    'left_leg': { 'x': 0, 'y': 0, 'z': 0 },
-    'right_leg': { 'x': -90 * 0.0175, 'y': 0, 'z': 0 }
 };
 
 module.exports = Steve;
