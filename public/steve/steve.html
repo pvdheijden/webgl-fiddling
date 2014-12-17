@@ -23,7 +23,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.min.js"></script>
     <script type="text/javascript" src="steve.js"></script>
     <script type="text/javascript" src="poses.js"></script>
 </head>
@@ -100,7 +100,7 @@
 
     var steve;
     $('#skin_image').one('load', function() {
-        steve = create_steve($('#skin_image')[0]);
+        steve = new Steve($('#skin_image')[0]);
         scene.add(steve);
 
         steve.pose(poses.WALK_POSE);
@@ -124,9 +124,9 @@
 
                         scene.remove(steve);
 
-                        steve = create_steve(skin_image);
+                        steve = new Steve(skin_image);
                         scene.add(steve);
-                        steve.pose(poses.WALK_POSE);
+                        steve.pose(poses.PARADE_POSE);
 
                     };
                     skin_image.src = fileReader.result;
